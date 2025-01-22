@@ -23,8 +23,19 @@ public class Filmarkiv implements FilmarkivADT{
 
     @Override
     public void leggTilFilm(Film nyFilm) {
+        if (filmarkiv.length == antallFilmer) {
+            utvidFilmArkiv();
+        }
         filmarkiv[antallFilmer] = nyFilm;
         antallFilmer++;
+    }
+
+    private void utvidFilmArkiv() {
+        Film[] nytabell = new Film[filmarkiv.length*2];
+        for (int i = 0; i < filmarkiv.length; i++) {
+            nytabell[i] = filmarkiv[i];
+        }
+        filmarkiv = nytabell;
     }
 
     @Override
@@ -33,24 +44,24 @@ public class Filmarkiv implements FilmarkivADT{
         if (film != null) {
             for (int i = 0; i < antallFilmer; i++) {
                 if (filmarkiv[i] == film) {
-                    for (int j = i; j < antallFilmer; j++) {
-                        filmarkiv[j] = filmarkiv[i];
+                    for (int j = i; j < antallFilmer - 1; j++) { 
+                        filmarkiv[j] = filmarkiv[j + 1];
                     }
-                    filmarkiv[antallFilmer] = null;
+                    filmarkiv[antallFilmer - 1] = null; 
                     antallFilmer--;
-                    return true; 
+                    return true;
                 }
             }
         }
-        return false; 
-}
-
+        return false;
+    }
+    //De to metodene under kunne hatt en egen metode for å "korte ned" tabellene.
     @Override
     public Film[] soekTittel(String delstreng) {
         Film[] sokteTitler = new Film[antallFilmer];
         int index = 0;
         for (Film film : filmarkiv) {
-            if (film.getTittel().contains(delstreng)) {
+            if (film != null && film.getTittel().contains(delstreng)) {
                 sokteTitler[index] = film;
                 index++;
             }
@@ -68,7 +79,7 @@ public class Filmarkiv implements FilmarkivADT{
         Film[] sokteTitler = new Film[antallFilmer];
         int index = 0;
         for (Film film : filmarkiv) {
-            if (film.getFilmskaper().contains(delstreng)) {
+            if (film != null && film.getFilmskaper().contains(delstreng)) {
                 sokteTitler[index] = film;
                 index++;
             }
@@ -85,7 +96,7 @@ public class Filmarkiv implements FilmarkivADT{
     public int antall(Sjanger sjanger) {
         int antallSjanger = 0;
         for (Film film : filmarkiv) {
-            if (film.getSjanger().equals(sjanger)) {
+            if (film != null && film.getSjanger().equals(sjanger)) {  
                 antallSjanger++;
             }
         }
@@ -96,5 +107,9 @@ public class Filmarkiv implements FilmarkivADT{
     public int antall() {
         return antallFilmer;
     };
+
+    public int getFilmArkivLengde() {
+        return filmarkiv.length;
+    }
 
 }

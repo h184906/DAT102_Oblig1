@@ -5,5 +5,18 @@ public enum Sjanger {
     DRAMA,
     COMEDY,
     HORROR,
-    THRILLER
+    THRILLER, 
+    FANTASY, 
+    SCIENCE_FICTION, 
+    ROMANCE, 
+    WAR;
+
+    public static Sjanger finnSjanger(String navn) {
+        for (Sjanger s : Sjanger.values()) {
+            if (s.toString().equals(navn.toUpperCase())) {
+                return s;
+            }
+        }
+        return null;
+    }
 }

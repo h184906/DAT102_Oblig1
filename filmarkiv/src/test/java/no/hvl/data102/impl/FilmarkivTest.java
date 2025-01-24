@@ -79,6 +79,7 @@ public class FilmarkivTest {
         assertEquals(forventetSkaperFilmer, faktiskSkaperFilmer);
     }
 
+    
     @SuppressWarnings("deprecation")
     @Test
     public void testSoekTittel() {

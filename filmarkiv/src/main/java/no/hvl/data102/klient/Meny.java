@@ -118,8 +118,10 @@ public boolean brukerValg(String valgtOpperasjon, Scanner obj) {
             break;
         case "6":
             System.out.println("Skriv Filmnummeret på filmen du vil slette");
-            int filmNr = obj.nextInt();
-            tekstgr.delMovie(filmNr, filmarkiv);
+            //fikk problemer med nextint i noen tilfeller, omgjøre til int i ettkant ser ut som å fungere
+            String filmNr = obj.nextLine();
+            tekstgr.delMovie(Integer.parseInt(filmNr), filmarkiv);
+            break;
         case "7":
             System.out.println("Avslutter...");
             return false; 

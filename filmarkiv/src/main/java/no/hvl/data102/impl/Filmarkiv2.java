@@ -58,6 +58,7 @@ public class Filmarkiv2  implements FilmarkivADT{
     @Override
     //tolker oppgave som at vi skal gi ut filmene i en tabell og ikke endre klassene, bare ta i bruk Noder. Så endrer ikke på Film[] slik at tester osv ikke skal endres
     public Film[] soekTittel(String delstreng) {
+        //TEST FEILER
         LinearNode<Film> itresjon = start;
 
         Film[] soekteTittler = new Film[antall];

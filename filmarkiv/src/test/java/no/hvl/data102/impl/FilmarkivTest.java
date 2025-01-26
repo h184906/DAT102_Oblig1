@@ -6,7 +6,8 @@ import static org.junit.Assert.assertEquals;
 
 public class FilmarkivTest {
 
-    private Filmarkiv filmarkiv;
+    // private Filmarkiv filmarkiv;
+    private Filmarkiv2 filmarkiv;
     private Film film1;
     private Film film2;
     private Film film3;
@@ -16,7 +17,8 @@ public class FilmarkivTest {
     @Before
     public void setup() {
         
-        filmarkiv = new Filmarkiv(3);
+        // filmarkiv = new Filmarkiv(3);
+        filmarkiv = new Filmarkiv2();
 
         
         film1 = new Film(1, "Christopher Nolan", "Inception", 2010, Sjanger.ACTION, "Warner Bros");
@@ -89,12 +91,12 @@ public class FilmarkivTest {
         assertEquals(forventetFilmer, faktiskFilmer);
     }
 
-    @Test
-    public void testUtvidFilmArkiv() {
-        int forventetUtvidelse = 6;
-        filmarkiv.leggTilFilm(film4);
-        int faktiskLengden = filmarkiv.getFilmArkivLengde();
-        assertEquals(faktiskLengden, forventetUtvidelse);
+    // @Test
+    // public void testUtvidFilmArkiv() {
+    //     int forventetUtvidelse = 6;
+    //     filmarkiv.leggTilFilm(film4);
+    //     int faktiskLengden = filmarkiv.getFilmArkivLengde();
+    //     assertEquals(faktiskLengden, forventetUtvidelse);
 
-    }
+    // }
 }

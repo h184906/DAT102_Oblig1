@@ -26,8 +26,7 @@ public class Filmarkiv implements FilmarkivADT{
         if (filmarkiv.length == antallFilmer) {
             utvidFilmArkiv();
         }
-        filmarkiv[antallFilmer] = nyFilm;
-        antallFilmer++;
+        filmarkiv[antallFilmer++] = nyFilm;
     }
 
     private void utvidFilmArkiv() {
@@ -62,8 +61,7 @@ public class Filmarkiv implements FilmarkivADT{
         int index = 0;
         for (Film film : filmarkiv) {
             if (film != null && film.getTittel().contains(delstreng)) {
-                sokteTitler[index] = film;
-                index++;
+                sokteTitler[index++] = film;
             }
         }
         Film[] onlyMatching = new Film[index];
@@ -80,8 +78,7 @@ public class Filmarkiv implements FilmarkivADT{
         int index = 0;
         for (Film film : filmarkiv) {
             if (film != null && film.getFilmskaper().contains(delstreng)) {
-                sokteTitler[index] = film;
-                index++;
+                sokteTitler[index++] = film;
             }
         }
         Film[] onlyMatching = new Film[index];

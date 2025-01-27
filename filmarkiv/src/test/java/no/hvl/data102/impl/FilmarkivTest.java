@@ -2,7 +2,9 @@ package no.hvl.data102.impl;
 
 import org.junit.Before;
 import org.junit.Test;
+
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 public class FilmarkivTest {
 
@@ -30,6 +32,7 @@ public class FilmarkivTest {
         filmarkiv.leggTilFilm(film1);
         filmarkiv.leggTilFilm(film2);
         filmarkiv.leggTilFilm(film3);
+        // filmarkiv.leggTilFilm(film4);
     }
 
     @Test
@@ -82,14 +85,20 @@ public class FilmarkivTest {
     }
 
     
-    @SuppressWarnings("deprecation")
     @Test
-    public void testSoekTittel() {
-        Film[] forventetFilmer = new Film[]{film2, film4};
+    public void soekTittel() {
+        Film[] filmer = filmarkiv.soekTittel("Incept");
         filmarkiv.leggTilFilm(film4);
-        Film[] faktiskFilmer = filmarkiv.soekTittel("Pulp");
-        assertEquals(forventetFilmer, faktiskFilmer);
+
+        assertNotNull(filmer);
+        assertEquals(1, filmer.length);
+        assertEquals("Inception", filmer[0].getTittel());
+        Film[] filmer1 = filmarkiv.soekTittel("Pulp");
+        assertNotNull(filmer1);
+        assertEquals(2, filmer1.length);
     }
+
+
 
     // @Test
     // public void testUtvidFilmArkiv() {
